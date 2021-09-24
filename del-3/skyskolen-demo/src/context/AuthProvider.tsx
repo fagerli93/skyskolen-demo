@@ -44,7 +44,7 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const handleOnAuthStateChanged = (user: any) => {
-    setState({ ...state, user: user, isLoggedIn: true });
+    setState({ ...state, user: user, isLoggedIn: !!user });
   };
 
   const signIn = async (): Promise<void> => {
