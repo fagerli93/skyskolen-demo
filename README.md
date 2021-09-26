@@ -204,7 +204,7 @@ Det er relativt enkelt å legge til "enkel" sikkerhet til databasen din - du vil
         1. Logget inn
         2. Dataen de sender inn (altså userId) faktisk er deres userId - så at de "eier" dataen
 
-# That is!
+# Thats is!
 
 Du er nå ferdig med denne lille workshoppen i Firebase! Du kan leke deg litt rundt om du er ferdig i god tid :)
 Du kan for eksempel:
