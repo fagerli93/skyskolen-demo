@@ -13,9 +13,9 @@ npm install -g firebase-tools
 
 ## Sett opp firebase CLI
 
-1. Registrer deg for (firebase)[https://firebase.google.com]
+1. Registrer deg i [Firebase](https://firebase.google.com) 🔥
 2. Opprett nytt prosjekt
-3. Ja/nei til google analytics
+3. Ja til Google analytics
 4. Install firebase via npm
 
 ```
@@ -25,7 +25,7 @@ npm install -g firebase-tools
 ## Bruk firebase i appen
 
 1. Fra stegene gjort tidligere fikk du en del keys etc - ta disse i bruk i en egen fil som heter `firebaseConfig.ts`
-1. Importer 'initializeApp' fra 'firebase/app' i fireBaseConfig.ts og konfigurer med keys'ene som du fikk tidligere:
+2. Importer 'initializeApp' fra 'firebase/app' i fireBaseConfig.ts og konfigurer med keys'ene som du fikk tidligere:
 
 ```
 const firebaseConfig = {
@@ -38,6 +38,9 @@ const firebaseConfig = {
   measurementId: XXX,
 };
 ```
+
+3. Se til at du tar i bruk firebase, som for eksempel i `App.tsx`
+4. Du kan sette alt dette opp som en hook - `useFirebase` om du vil.
 
 ## Deploy firebase til en https støttet nettside
 
@@ -103,6 +106,13 @@ import {
 2. Om brukeren er logget inn:
     1. Vis navnet til brukeren
     2. Vis en knapp for å logge brukeren ut
+
+## Sett opp Google Analytics
+
+1. Importer `getAnalytics` fra `firebase/analytics`
+2. Ta i bruk analytics ved i bruke `logEvent` - rapporter når en bruker logger inn
+
+Analytics kan ta litt tid før meldingene kommer inn - for å debugge dette kan du installere denne plugin til chrome: [Google Analytics Debugger](https://chrome.google.com/webstore/detail/google-analytics-debugger/jnkmfdileelhofjcijamephohjechhna)
 
 # Del 3: Lagre meldinger til firestore
 
@@ -189,4 +199,11 @@ Det er relativt enkelt å legge til "enkel" sikkerhet til databasen din - du vil
 1. Gå under firestore i dashboardet
 2. Gå inn under rules
 3. Lag en ny regel som skal ha pattern `match /messages/{docId}`
-    1. Brukeren skal kun skulle skrive (`read`) HVIS de er logget inn - dette kan du sjekke ut via `request.auth`
+    1. Brukeren skal kun skulle lese (`read`) om de er logget inn - dette kan du sjekke ut via `request.auth`
+    2. Brukeren skal kun kunne skrive (write) om de er:
+        1. Logget inn
+        2. Dataen de sender inn (altså userId) faktisk er deres userId - så at de "eier" dataen
+
+# That is!
+
+Du er nå ferdig med denne lille workshoppen i Firebase! Du kan leke deg litt rundt om du er ferdig i god tid :)
