@@ -1,0 +1,85 @@
+$background-color: #282c34;
+$background-header: #1d1e1f;
+
+#root {
+    background-color: $background-color;
+}
+
+.app {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.chat-room {
+    @media (max-width: 978px) {
+        margin: 0 20% 0 20%;
+    }
+}
+
+.app-logo {
+    pointer-events: none;
+    color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .app-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.app-header {
+    background-color: $background-header;
+    .app-header-title {
+        font-size: 2rem;
+        color: white;
+    }
+    .app-header-actions {
+        justify-content: flex-end;
+    }
+    span {
+        color: white;
+    }
+}
+
+.chat-room-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: flex-end;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.chat-input {
+    margin-bottom: 1rem;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(218, 216, 216);
+    width: 100%;
+}
+
+.chat-content {
+    border-top: 1px solid white;
+    padding-top: 10px;
+    display: flex;
+    font-size: larger;
+}
+
+.user-photo {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 10px;
+}
+
+.app-login {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

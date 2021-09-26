@@ -41,6 +41,7 @@ const AuthProvider: React.FC = ({ children }) => {
         const unsub = onAuthStateChanged(auth, handleOnAuthStateChanged);
 
         return unsub;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleOnAuthStateChanged = (user: any) => {
