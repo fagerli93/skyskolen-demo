@@ -5,7 +5,7 @@ import AppContainer from "./components/AppContainer";
 import { useAuth } from "./context/AuthProvider";
 import useFirebase from "./utils/firebaseConfig";
 import Header from "./components/Header";
-import SignOutButton from "./components/LogoutButton";
+import SignOutButton from "./components/SignOutButton";
 
 function App() {
     useFirebase();

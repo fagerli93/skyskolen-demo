@@ -102,11 +102,71 @@ import {
     1. Vis navnet til brukeren
     2. Vis en knapp for å logge brukeren ut
 
-# Del 3: Opprett en firestore database
+# Del 3: Lagre meldinger til firestore
+
+## Opprett firestore database
 
 1. I firebase portalen, gå under build - Firestore database - Create database
     1. Start in test mode - eur3 (europe-west)
-2. Opprett en ny collection, call den gjerne messages med følenge fields:
-    1. message - string
-    2. userId - string
-    3. published - timestamp
+2. Opprett en ny collection, call den gjerne messages med følgende fields:
+    1. message (string) - dette er selve meldinger
+    2. userId (string) - userId til personen som skrev meldingen
+    3. name (string) - navnet på den som skrev meldingen
+    4. date (string) - dato når meldingen ble skrevet
+    5. photo (string) - URL til et bilde til brukeren
+
+## Skrive og lese meldinger fra firestore - LIVE!
+
+Start ved å lage et dokument i firestore som inneholder feltene over - bildet kan ignoreres for nå
+
+1. Lag en [hook](https://reactjs.org/docs/hooks-intro.html) som vi kaller useMessages
+2. Opprett et array av meldinger `messages` via [useState](https://reactjs.org/docs/hooks-state.html) - dette skal ha interfacet:
+
+```
+export interface Message {
+    id: string;
+    message: string;
+    date: string;
+    userId: string;
+    name: string;
+    photo?: string;
+}
+```
+
+Generelt når du skal hente ut data fra en collection, så må du bruke en `query` om du ha flere dokumenter, veldig likt det man kjenner fra database verden.
+Først må du lage en query - der du spesifiserer at du skal hente fra en spesifikk collection (`messages`), og om du skal filtrere bort noe data ved for eksempel å bruke `where`, eller `orderBy` etc.
+
+Noen greie imports man kan bruke er da:
+
+```
+import {
+    query,
+    collection,
+    getFirestore,
+    orderBy,
+    limit,
+    onSnapshot,
+    addDoc,
+    getDocs,
+} from "firebase/firestore";
+```
+
+### Opprett en query
+
+1. Opprett en `query` for å hente ut alle dokumentene fra collection `messages` - Sjekk ut denne [linken](https://firebase.google.com/docs/firestore/query-data/get-data)
+2. Sorter de etter `date` i dokumentet
+3. Hent kun ut de siste 25 meldingene
+
+### Les ut dataen fra `messages` collection
+
+Nå som du har lagt en query kan du prøve å hente ut alle dokumentene via `getDocs` funksjonen, og parse dataen som kommer tilbake fra firebase.
+
+### Les ut data LIVE fra firestore collection
+
+I forrige del leste du ut dataen fra `messages` collection, men det er ikke så kult for en chat app.
+Derfor skal vi lese ut data LIVE :)
+
+1. Lag en subscription via onSnapshot, som bruker querien som du lagde tidligere
+2. I en [useEffect](https://reactjs.org/docs/hooks-effect.html) hook (i useMessages hooken din) - ta i bruk querien - når du får ny data, oppdater state arrayet som du lagde tidligere
+
+Eksporter state arrayet med meldinger fra hooken din, og ta den i bruk i `ChatRoom.tsx` filen din. Da kan du mappe ut en `ChatMessage` for hver melding du får.

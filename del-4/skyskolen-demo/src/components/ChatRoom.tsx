@@ -13,7 +13,6 @@ const ChatRoom: React.FC = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(newMessage);
 
         sendMessage(newMessage);
         setNewMessage("");

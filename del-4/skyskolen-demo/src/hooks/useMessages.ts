@@ -47,7 +47,6 @@ const useCollection = (props: UseCollectionProps) => {
                 } as Message;
                 return res;
             });
-            console.log(updatedItems);
             setMessages(updatedItems);
         });
 

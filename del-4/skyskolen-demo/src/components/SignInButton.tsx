@@ -3,12 +3,16 @@ import { Button } from "react-bootstrap";
 
 interface SignInButtonProps {
     signIn: () => void;
+    title?: string;
 }
 
-const SignInButton: React.FC<SignInButtonProps> = ({ signIn }) => {
+const SignInButton: React.FC<SignInButtonProps> = ({
+    signIn,
+    title = "Sign in",
+}) => {
     return (
         <Button variant='primary' size='lg' onClick={signIn}>
-            Logg inn!
+            {title}
         </Button>
     );
 };

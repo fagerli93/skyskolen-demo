@@ -7,7 +7,7 @@ interface SignOutButtonProps {
 
 const SignOutButton: React.FC<SignOutButtonProps> = ({
     signOut,
-    title = "Log out",
+    title = "Sign out",
 }) => {
     return (
         <Button variant='secondary' onClick={signOut}>
