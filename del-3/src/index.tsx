@@ -6,18 +6,20 @@ import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/AuthProvider";
 import initializeFirebase from "./utils/firebaseConfig";
 import { UserProvider } from "./context/UserProvider";
+import "./styles/App.scss";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 initializeFirebase();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <UserProvider>
-        <App />
-      </UserProvider>
-    </AuthProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <AuthProvider>
+            <UserProvider>
+                <App />
+            </UserProvider>
+        </AuthProvider>
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

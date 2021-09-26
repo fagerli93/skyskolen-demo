@@ -1,4 +1,3 @@
-import "./styles/App.scss";
 import ChatRoom from "./components/ChatRoom";
 import LoginComponent from "./components/LoginComponent";
 import AppContainer from "./components/AppContainer";

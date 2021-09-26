@@ -14,7 +14,10 @@ const ChatMessageGroup: React.FC<ChatMessageGroupProps> = ({ messages }) => {
             {messages.map(message => (
                 <ChatMessage
                     key={message.id}
-                    message={message}
+                    message={message.message}
+                    date={message.date}
+                    name={message.name}
+                    photo={message.photo}
                     isActiveUser={user?.uid === message.userId}
                 />
             ))}

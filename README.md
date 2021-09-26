@@ -1,14 +1,15 @@
-# Skyskolen firebase demo
+# Skyskolen firebase workshop
 
 ## Prerequisites:
 
-Firebase-tools:
+-   Node
+-   Firebase-tools:
 
 ```
 npm install -g firebase-tools
 ```
 
-# Del-1: Sett opp firebase i appen og deploy til en https støttet nettside
+# Del-1: Sett opp firebase i appen og deploy til en https støttet nettside (del-1)
 
 ## Sett opp firebase CLI
 
@@ -46,8 +47,9 @@ Deploy:
 2. `firebase init hosting` ->
    public directory: build
    confire as SPA - YES
-3. `npm build`
+3. `npm run build`
 4. `firebase deploy`
+5. Sjekk ut nettsiden din!
 
 # Del 2: Autentisering - Google
 
@@ -170,3 +172,21 @@ Derfor skal vi lese ut data LIVE :)
 2. I en [useEffect](https://reactjs.org/docs/hooks-effect.html) hook (i useMessages hooken din) - ta i bruk querien - når du får ny data, oppdater state arrayet som du lagde tidligere
 
 Eksporter state arrayet med meldinger fra hooken din, og ta den i bruk i `ChatRoom.tsx` filen din. Da kan du mappe ut en `ChatMessage` for hver melding du får.
+
+### Skriv en melding til firestore
+
+For å skrive meldinger til firestore kan du ta i bruk `addDoc` importen.
+
+1. Lag en funksjon som heter `sendMessage` som tar inn en string i `useMessages` hooken din
+2. Bruk `addDoc` for å legge til en ny melding - her må du lage en melding med interfacet til en `Message` - data for userId, name etc du hente ut fra den innloggede brukeren
+3. I tillegg å eksportere `messages` fra `useMessages` hooken din, legg til `sendMessage` til exports.
+4. Ta i bruk `sendMessage` i `ChatRoom.tsx` - her kan du for eksempel bruke `ChatInput` for å skrive meldinger.
+
+# Del 4: Sikkerhet rundt firestore
+
+Det er relativt enkelt å legge til "enkel" sikkerhet til databasen din - du vil ikke at absolutt alle skal kunne skrive meldinger dit.
+
+1. Gå under firestore i dashboardet
+2. Gå inn under rules
+3. Lag en ny regel som skal ha pattern `match /messages/{docId}`
+    1. Brukeren skal kun skulle skrive (`read`) HVIS de er logget inn - dette kan du sjekke ut via `request.auth`

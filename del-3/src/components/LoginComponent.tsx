@@ -1,4 +1,5 @@
 import { useAuth } from "../context/AuthProvider";
+import SignInButton from "./SignInButton";
 
 const LoginComponent = () => {
     const { signIn } = useAuth();
@@ -13,7 +14,7 @@ const LoginComponent = () => {
 
     return (
         <div className='app-login'>
-            <button onClick={handleLoginClick}>Log in!</button>;
+            <SignInButton signIn={handleLoginClick} />
         </div>
     );
 };
