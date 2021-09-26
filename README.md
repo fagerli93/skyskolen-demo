@@ -207,3 +207,9 @@ Det er relativt enkelt å legge til "enkel" sikkerhet til databasen din - du vil
 # That is!
 
 Du er nå ferdig med denne lille workshoppen i Firebase! Du kan leke deg litt rundt om du er ferdig i god tid :)
+Du kan for eksempel:
+
+1. Legge til flere login providers, eller alternative login metoder
+2. Legge inn støtte for å laste opp bilder via storage
+3. Se litt på analytics
+4. Se litt på performance
